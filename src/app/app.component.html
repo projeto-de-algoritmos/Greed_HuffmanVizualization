@@ -1,0 +1,44 @@
+<h1>Awesome Graph Map Generator</h1>
+
+<div class="instrucoes"> 
+    <h3>Como utilizar a aplicação:</h3>
+    <dl>
+        <p>Adicione cidades: Insira o nome, descrição</p>
+        <p>Adicione estradas: Selecione a cidade de origem e destino da estrada e a distância</p>
+        <p>Calcule o menor caminho entre cidades: Selecione a cidade de partida e chegada e <br>descubra o melhor caminho entre elas</p>
+    </dl>
+</div>
+
+<br>
+
+    
+<div style="display: flex; width: 100%; justify-content: space-evenly;">             
+
+    <div class="itemForms">
+        <form action="" method="post" id="formulario">
+            <div>
+                <label for="city__name">
+                    Frase:
+                    <br />
+                    <input type="text" name="city__name" id="nome" [(ngModel)]="frase" required>
+                </label>
+            </div>
+            
+            <div>
+                <button type="submit" id="submitbtn" (click)="gerarArvore()">Gerar Árvore</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <label for="frequencia">Frequencias: </label>
+        <ul>
+            <li *ngFor="let node of listaNos">{{node.caracter}} - {{node.peso}}</li>
+        </ul>
+
+    </div>
+</div>    
+   <br>
+   <hr>
+
+    <div #mynetwork style="display: flex; width: auto; height: 500px;"></div>
+

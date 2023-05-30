@@ -1,0 +1,93 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Estilos para o bloco de instruções */
+  .instrucoes {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .instrucoes h3 {
+    color: #333;
+  }
+  
+  .instrucoes dl {
+    margin-top: 10px;
+  }
+  
+  .instrucoes p {
+    margin: 5px 0;
+  }
+  
+  /* Estilos para os formulários */
+  .itemForms {
+    margin-right: 20px;
+  }
+  
+  form {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    max-width: 150px;
+  }
+  
+  button[type="submit"],
+  button[type="button"] {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover,
+  button[type="button"]:hover {
+    background-color: #45a049;
+  }
+  
+  select {
+    padding: 5px;
+    margin-bottom: 10px;
+    max-width: 150px;
+  }
+  
+  /* Estilos para a lista de cidades existentes */
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    max-width: 400px;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para a seção de busca de menor caminho */
+  div:last-child {
+    margin-left: 20px;
+  }
+  
+  /* Estilos para a seção de visualização do grafo */
+  #mynetwork {
+    width: auto;
+    height: 500px;
+    display: flex;
+  }
+  
