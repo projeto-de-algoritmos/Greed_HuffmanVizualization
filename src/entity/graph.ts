@@ -1,8 +1,5 @@
 import Edge1 from "./edge";
-import Node1 from "./node";
-import City from "./city";
 import No from "./no";
-
 
 export default class Graph {
     nodes: No[];
@@ -37,7 +34,7 @@ export default class Graph {
     //     return temp;
     // }
 
-    getEdge(nodeA: Node1, nodeB: Node1): Edge1 | undefined {
+    getEdge(nodeA: No, nodeB: No): Edge1 | undefined {
         return this.edges.find(x => x.begin == nodeA.id && x.end == nodeB.id);
     
     }
