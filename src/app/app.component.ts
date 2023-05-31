@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
         nodes: nodes,
         edges: edges
     };
-    var options = {};
+    var options = {layout:{hierarchical:{enabled:true}, sortMethod: 'directed',  shakeTowards: 'roots'}};
 
     this.network = new vis.Network(container, data, options);
   }
@@ -92,14 +92,22 @@ export class AppComponent implements OnInit {
 
     this.listaNos = frase1;
 
-    console.log(frase1);
-
     var Huff = this.huffman.gerarArvoreHuff(frase1); 
 
-    console.log(Huff);
-    
 
-    this.network.body
+    console.log(this.huffman.listaArestas)
+    //console.log(this.huffman.)
+
+    for(let i=0; i<this.huffman.listaNo.length; i++){
+      this.network.body.data.nodes.add({ id: this.huffman.listaNo[i].id, label: this.huffman.listaNo[i].caracter });
+    }
+
+    for(let i=0; i<this.huffman.listaIdNoSemCarac.length; i++){
+      this.network.body.data.nodes.add({ id: this.huffman.listaIdNoSemCarac[i], label: ""});
+    }
+
+    for(let i=0; i<this.huffman.listaArestas.length; i++)
+    this.network.body.data.edges.add({ id: this.huffman.listaArestas[i].id, from: this.huffman.listaArestas[i].begin, to: this.huffman.listaArestas[i].end, color:{color:"blue"}, label:this.huffman.listaArestas[i].weight.toString(), arrows: "to"});
   }
 
 }

@@ -11,6 +11,12 @@ export default class Huffman{
     frequencias: number[];
     listaArestas: Edge1[];
 
+
+    listaIdNoSemCarac: number[] = [];
+
+    IdNos = 0;
+    idArvore = 0;
+    idAresta = 0;
     count = 0;
 
     constructor(){
@@ -23,7 +29,7 @@ export default class Huffman{
 
     frequenciaCaracter(frase: string): No[] {
 
-        var IdNos = 1;
+        
         var listaNos: No[] = [];        
 
         for(let x = 0; x < frase.length; x++){
@@ -33,7 +39,7 @@ export default class Huffman{
                 listaNos[index].peso = listaNos[index].peso+1;
             }
             else{
-                var newNo = new No(IdNos++,frase[x],1);
+                var newNo = new No(this.IdNos++,frase[x],1);
                 listaNos.push(newNo);
                 this.listaNo.push(newNo);
                 this.count++;
@@ -49,7 +55,7 @@ export default class Huffman{
         var resultArvore = new Arvore();
 
         for(let i=0; i<nos.length; i++){
-            var newArvore = new Arvore(nos[i].peso);
+            var newArvore = new Arvore(nos[i].id, nos[i].peso);
             newArvore.no = nos[i];
 
             queue.enqueue(newArvore, newArvore.peso);
@@ -76,13 +82,20 @@ export default class Huffman{
     }
 
     juntar(result: Arvore, arv: Arvore): Arvore{
-
-        var novaArv = new Arvore();
+        this.listaIdNoSemCarac.push(this.IdNos);
+        var novaArv = new Arvore(this.IdNos++);
 
         novaArv.peso = result.peso+arv.peso;
 
         novaArv.direita = result;
         novaArv.esquerda = arv;
+
+
+        var newAresta1 = new Edge1(this.idAresta++, novaArv.id, result.id, 1);
+        var newAresta0 = new Edge1(this.idAresta++, novaArv.id, arv.id, 0);
+
+        this.listaArestas.push(newAresta0);
+        this.listaArestas.push(newAresta1);
 
         return novaArv;
     }
