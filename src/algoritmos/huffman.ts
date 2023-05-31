@@ -1,8 +1,8 @@
-import No from "src/entity/no";
-import { HeapMin } from "./heap";
 import Arvore from "src/entity/arvore";
 import Edge1 from "src/entity/edge";
 import Graph from "src/entity/graph";
+import No from "src/entity/no";
+import PriorityQueue from "./priorityQueue";
 
 export default class Huffman{
 
@@ -21,7 +21,7 @@ export default class Huffman{
 
     }
 
-    frequeciaCaracter(frase: string): No[] {
+    frequenciaCaracter(frase: string): No[] {
 
         var IdNos = 1;
         var listaNos: No[] = [];        
@@ -43,47 +43,49 @@ export default class Huffman{
         return listaNos;
     }
 
-    gerarArvore(nos: No[]): Arvore| null{
+    gerarArvoreHuff(nos: No[]): Arvore| null{
 
-        var heap = new HeapMin<Arvore>();
+        var queue = new PriorityQueue<Arvore>();
         var resultArvore = new Arvore();
-
-        var listEdge: Edge1[] = [];
 
         for(let i=0; i<nos.length; i++){
             var newArvore = new Arvore(nos[i].peso);
             newArvore.no = nos[i];
 
-            heap.inserir(newArvore.peso, newArvore);
+            queue.enqueue(newArvore, newArvore.peso);
         }
 
-        while(!heap.estaVazio()){
-            var arv1 = heap.extrair();
-            var arv2 = heap.extrair();
-            if(arv1 === null || arv2 === null){
-                // this.juntar(resultArvore, arv.elemento);
-                // heap.
-                if(arv1 !== null){
-                    return arv1.elemento;
-                }
-                else{
-                    return arv2.elemento;
-                }
+
+        while(!queue.isEmpty()){
+
+            if(queue.size() === 1){
+                var arv1 = queue.dequeue();
+                return arv1;
             }
-            heap.inserir(arv1.elemento.peso+arv2.elemento.peso,this.juntar(arv1.elemento, arv2.elemento));
+
+            var arv1 = queue.dequeue();
+            var arv2 = queue.dequeue();
+
+
+            var temp = this.juntar(arv1!, arv2!);
+            queue.enqueue(temp, temp.peso);
             
         }
-        return null;
+        return resultArvore;
         
     }
 
     juntar(result: Arvore, arv: Arvore): Arvore{
-        if(result.peso === 0){
-            result.direita = arv;
-        }
 
-        if(result.possuiApenasUmaFolha() && arv.possuiApenasUmaFolha()){
+        var novaArv = new Arvore();
 
-        }
+        novaArv.peso = result.peso+arv.peso;
+
+        novaArv.direita = result;
+        novaArv.esquerda = arv;
+
+        return novaArv;
     }
+
+
 }
