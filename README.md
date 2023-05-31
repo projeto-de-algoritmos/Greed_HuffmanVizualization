@@ -14,12 +14,12 @@
 O projeto consiste em um gerador de árvores a partir da codificação de Huffman de uma frase. O usuário pode adicionar uma frase e ver a árvore gerada, levando em consideração a frequência de cada caractere como fator para criação.
 
 ## Gravação
-[Entrega Grafos 2 - MapGenerator2.0](https://youtu.be/9p7VaKlN6Fs)
+[Entrega Greed - Greed Huffman Vizualization](https://youtu.be/9p7VaKlN6Fs)
 
 ## Screenshots
-![img](./imagens/img1.png)
-![img](./imagens/img3.png)
-![img](./imagens/img2.png)
+![img](./images/img1.png)
+![img](./images/img3.png)
+![img](./images/img2.png)
 
 ## Instalação 
 **Linguagem**: TypeScript<br>
